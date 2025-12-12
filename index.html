@@ -26,7 +26,7 @@
         background: #0d0f23;
         color: var(--text);
         overflow-x: hidden;
-        padding-bottom: 70px; /* Added: Space for the fixed bottom nav on mobile */
+        padding-bottom: 70px; /* Space for the fixed bottom navigation */
     }
 
     .light{
@@ -46,41 +46,50 @@
          100%{ transform: scale(1.4); opacity: 0.9; }
     }
 
-    /* MOBILE NAVIGATION (Default: "from the down side") */
+    /* FIXED BOTTOM NAVIGATION (Applied to all screen sizes) */
     nav{
            width: 100%;
            position: fixed;
-           top: auto; /* Changed: Remove top positioning */
-           bottom: 0; /* Added: Fixed to the bottom */
+           top: auto;
+           bottom: 0; /* Fixed to the bottom */
            backdrop-filter: blur(12px);
            background: rgba(255,255,255,0.06);
-           padding: 10px 0; /* Adjusted padding */
+           padding: 10px 0;
            z-index: 999;
            display:flex;
-           justify-content:space-around; /* Changed: Spread out links */
-           gap: 0; /* Changed: Removed gap */
-           border-bottom: none; /* Changed: Removed bottom border */
-           border-top: 1px solid rgba(255,255,255,0.1); /* Added: Top border for bottom nav */
+           justify-content:space-around; /* Spread out links */
+           gap: 0;
+           border-top: 1px solid rgba(255,255,255,0.1);
     }
      nav a{
            text-decoration:none;
-           font-weight:400; /* Adjusted: Lighter font for mobile */
-           font-size: 14px; /* Adjusted: Smaller font for mobile */
+           font-weight:400; 
+           font-size: 14px;
            color: var(--neon);
-           padding: 8px 10px; /* Adjusted: Smaller padding for mobile */
+           padding: 8px 10px;
            border-radius:10px;
            transition:0.3s;
-           flex-grow: 1; /* Added: Ensures links share space */
-           text-align: center; /* Added: Center text in each link */
+           flex-grow: 1; 
+           text-align: center; 
     }
      nav a:hover{
            background: var(--primary);
           color:white;
           transform:translateY(-3px);
     }
+    
+     /* You can update the links to be simpler, like icons, to fit better in the small mobile bar. 
+        For example:
+        <a href="#home">🏠 Home</a>
+        <a href="#about">👤 About</a>
+        <a href="#projects">💻 Projects</a>
+        <a href="#skills">🛠 Skills</a>
+        ...
+        Since you only provided text, I will keep the text, but a few links might wrap on very small screens.
+     */
 
      header{
-          padding-top:50px; /* Adjusted: Reduced top padding for mobile since nav is at the bottom */
+          padding-top:50px; 
           padding-bottom:90px;
           text-align:center;
     }
@@ -286,32 +295,6 @@
            font-size:14px;
            opacity:0.7;
         }
-
-    /* DESKTOP STYLES (min-width: 768px) */
-    @media (min-width: 768px) {
-        body {
-            padding-bottom: 0; /* Remove bottom padding for desktop */
-        }
-        nav{
-            top: 0; /* Fixed to the top */
-            bottom: auto; /* Remove bottom positioning */
-            padding: 15px 5%; /* Restore desktop padding, align from left edge */
-            justify-content: flex-start; /* "from the left side" */
-            gap: 25px; /* Restore desktop gap */
-            border-bottom: 1px solid rgba(255,255,255,0.1); /* Restore bottom border */
-            border-top: none; /* Remove top border */
-        }
-        nav a{
-            font-weight:600; /* Restore desktop font weight */
-            font-size: initial; /* Restore desktop font size */
-            padding:10px 18px; /* Restore desktop padding */
-            flex-grow: 0;
-            text-align: left;
-        }
-        header{
-            padding-top: 130px; /* Restore original top padding */
-        }
-    }
 </style>
 </head>
 
