@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caspher Canda • E-Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --primary: #6c63ff;
+        --secondary: #9d4edd;
+        --neon: #00eaff;
+        --card-bg: rgba(255,255,255,0.08);
+        --glass: rgba(255,255,255,0.15);
+        --text: #f5f7fa;
+    }
+
+   *{
+        margin: 0; padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+    body{
+        background: #0d0f23;
+        color: var(--text);
+        overflow-x: hidden;
+    }
+
+    .light{
+          position:absolute;
+          width:350px;
+          height:350px;
+          background: radial-gradient(circle,var(--primary),transparent 70%);
+          filter: blur(110px);
+          animation: glow 8s infinite alternate;
+          z-index: -1;
+    }
+    .light:nth-child(1){ top: -80px; left: -60px; }
+    .light:nth-child(2){ bottom: -120px; right: -80px; animation-delay: 2s; }
+
+           @keyframes glow{
+           0%{ transform: scale(1); opacity: 0.6; }
+         100%{ transform: scale(1.4); opacity: 0.9; }
+    }
+
+    nav{
+           width: 100%;
+           position: fixed;
+           top:0;
+           backdrop-filter: blur(12px);
+           background: rgba(255,255,255,0.06);
+           padding: 15px 0;
+           z-index: 999;
+           display:flex;
+           justify-content:center;
+           gap: 25px;
+           border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+     nav a{
+           text-decoration:none;
+           font-weight:600;
+           color: var(--neon);
+           padding:10px 18px;
+           border-radius:10px;
+           transition:0.3s;
+    }
+     nav a:hover{
+           background: var(--primary);
+          color:white;
+          transform:translateY(-3px);
+    }
+
+     header{
+          padding-top:130px;
+          padding-bottom:90px;
+          text-align:center;
+    }
+     header img{
+          width:140px;
+          height:140px;
+          border-radius:50%;
+          object-fit:cover;
+          border:4px solid var(--neon);
+          box-shadow:0 0 25px var(--neon);
+          animation: pop 1s ease;
+    }
+     @keyframes pop{
+         0%{ transform: scale(0); opacity:0; }
+         100%{ transform: scale(1); opacity:1; }
+    }
+     header h1{
+          margin-top:20px;
+          font-size:42px;
+         font-weight:800;
+    }
+     header p{
+          margin-top:10px;
+          font-size:18px;
+          opacity:0.85;
+    }
+
+     .section{
+          width:min(1100px,90%);
+          margin:40px auto;
+         padding:40px;
+         background: var(--glass);
+         backdrop-filter: blur(15px);
+         border-radius:25px;
+         border:1px solid rgba(255,255,255,0.1);
+         box-shadow:0 0 40px rgba(0,255,255,0.06);
+         display:none;
+         animation: fade 0.7s ease;
+    }
+     .section.active{ display:block; }
+
+     @keyframes fade{
+          from{ opacity:0; transform:translateY(20px); }
+          to{ opacity:1; transform:translateY(0); }
+    }
+
+        .section h2{
+           text-align:center;
+           font-size:32px;
+          margin-bottom:20px;
+          color:var(--neon);
+        }
+
+        .card{
+            background: var(--card-bg);
+            border:1px solid rgba(255,255,255,0.1);
+            padding:20px;
+            border-radius:18px;
+            box-shadow:0 0 18px rgba(0,0,0,0.3);
+            transition:0.3s;
+        }
+        .card:hover{
+            transform:translateY(-8px);
+            box-shadow:0 0 25px rgba(0,255,255,0.3);
+        }
+
+        .timeline{
+            border-left:3px solid var(--neon);
+            padding-left:20px;
+            margin-top:20px;
+        }
+        .timeline-item{
+            margin:25px 0;
+            position:relative;
+            animation: slide 0.8s ease;
+        }
+        .timeline-item:before{
+            content:"";
+            width:14px;
+            height:14px;
+            background:var(--neon);
+            border-radius:50%;
+            position:absolute;
+            left:-28px;
+            top:5px;
+            box-shadow:0 0 15px var(--neon);
+        }
+            @keyframes slide{
+            from{ opacity:0; transform:translateX(-20px);}
+            to{ opacity:1; transform:translateX(0);}
+        }
+
+        .skills{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:30px;
+            margin-top:20px;
+        }
+        .skill{
+            text-align:center;
+        }
+
+        .circle{
+            width:120px;
+            height:120px;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:22px;
+            font-weight:700;
+            color:white;
+            background:
+            radial-gradient(circle,#00000066 60%,transparent 61%),
+            conic-gradient(var(--neon) calc(var(--p)*1%), #373a50 0);
+            box-shadow:0 0 25px rgba(0,255,255,0.2);
+            animation: pop 1s ease;
+        }
+
+        .certificates-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .cert-box {
+            width: 420px;
+            background: #121826;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+
+        .cert-box:hover {
+            transform: translateY(-6px);
+        }
+
+        .cert-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .cert-title {
+           font-size: 22px;
+           font-weight: 700;
+           color: #ffffff;
+           margin-top: 18px;
+        }
+
+       .cert-provider {
+           font-size: 15px;
+           color: #cdd5e1;
+           margin-top: 5px;
+        }
+
+       .cert-link {
+           display: inline-block;
+           margin-top: 12px;
+           font-weight: 600;
+           font-size: 16px;
+           color: #46c3ff;
+           text-decoration: none;
+           transition: 0.3s;
+        }
+
+        .cert-link:hover {
+           color: #82dcff;
+        }
+
+       .project-grid{
+           display:grid;
+           grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+           gap:25px;
+        }
+       .project-card{
+           background:var(--card-bg);
+           border:1px solid rgba(255,255,255,0.1);
+           padding:18px;
+           border-radius:20px;
+           transition:0.3s;    
+        }
+       .project-card:hover{
+           transform:translateY(-10px);
+           box-shadow:0 0 18px rgba(0,255,255,0.4);
+        }
+       .project-card img{
+           width:100%;
+           height:160px;
+           border-radius:12px;
+           object-fit:cover;
+        }
+
+       footer{
+           text-align:center;
+           padding:40px 0;
+           font-size:14px;
+           opacity:0.7;
+        }
+</style>
+</head>
+
+<body>
+
+<div class="light"></div>
+<div class="light"></div>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#educ">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#reflection">Reflection</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<header>
+    <img src="prof pic.jpg" alt="">
+    <h1>Caspher R. Canda</h1>
+    <p>Web Developer • Designer • IT Student</p>
+</header>
+
+<section id="home" class="section active">
+    <h2>Welcome! Explore My E-Portfolio</h2>
+    <div class="card">
+        I am <b>Caspher R. Canda</b>, an IT student with a growing interest in web development.
+        I am currently developing my skills in HTML, CSS, JavaScript, and PHP as I work toward becoming a competent professional in the field.
+    </div>
+</section>
+
+<section id="about" class="section">
+    <h2>About Me</h2>
+    <div class="card">
+         Hi! I'm <b>Caspher R. Canda</b>, an IT student and beginner Web Developer. I enjoy creating simple,
+    user-friendly websites using HTML, CSS, JavaScript, and PHP. I love learning new things, improving
+    my skills, and building small projects that help me grow as a developer. My goal is to continue learning
+    and eventually become a skilled professional in the tech field.
+    </div>
+</section>
+
+<section id="educ" class="section">
+    <h2>Education</h2>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <div class="card">
+                <h3>Colegio De Montalban</h3>
+                <p>2024 – Present</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="card">
+                <h3>Southville 8B Senior High School</h3>
+                <p>2022 – 2024</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="card">
+                <h3>Southville 8B National High School</h3>
+                <p>2017 – 2022</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="card">
+                <h3>San Isidro Labrador Elementary School</h3>
+                <p>2011 – 2017</p>
+            </div>
+        </div>
+
+    </div>
+
+    <h2 style="margin-top: 40px;">Certificates</h2>
+
+        <div class="certificates-container">
+             <div class="cert-box">
+        <img src="html.jpg" class="cert-img" alt="HTML Certificate">
+        <div class="cert-title">Introduction to HTML</div>
+        <div class="cert-provider">Simplilearn</div>
+        <a class="cert-link" href="html.jpg" target="_blank">View Certificate ↗</a>
+    </div>
+
+    <div class="cert-box">
+        <img src="css.jpg" class="cert-img" alt="CSS Certificate">
+        <div class="cert-title">Introduction to CSS</div>
+        <div class="cert-provider">Simplilearn</div>
+        <a class="cert-link" href="css.jpg" target="_blank">View Certificate ↗</a>
+    </div>
+
+    <div class="cert-box">
+        <img src="java.jpg" class="cert-img" alt="JavaScript Certificate">
+        <div class="cert-title">JavaScript Essentials</div>
+        <div class="cert-provider">Simplilearn</div>
+        <a class="cert-link" href="java.jpg" target="_blank">View Certificate ↗</a>
+    </div>
+       
+</section>
+
+<section id="skills" class="section">
+    <h2>Technical Skills</h2>
+
+    <div class="skills">
+
+        <div class="skill">
+            <div class="circle" style="--p:70;">60%</div>
+            <p>HTML</p>
+        </div>
+
+        <div class="skill">
+            <div class="circle" style="--p:60;">70%</div>
+            <p>CSS</p>
+        </div>
+
+        <div class="skill">
+            <div class="circle" style="--p:45;">45%</div>
+            <p>JavaScript</p>
+        </div>
+
+        <div class="skill">
+            <div class="circle" style="--p:35;">35%</div>
+            <p>PHP</p>
+        </div>
+
+    </div>
+
+       <h3>Soft Skills</h3>
+    <ul>
+        <li>Time Management</li><br>
+        <li>Adaptability</li><br>
+        <li>Creativity</li><br>
+        <li>Problem Solving</li><br>
+    </ul>
+
+</section>
+
+<section id="projects" class="section">
+    <h2>Projects</h2>
+
+    <div class="project-grid">
+        <div class="project-card">
+            <img src="individ.jpg">
+            <h3>PHP Individual Activity</h3>
+            <a href="https://student-information.infinityfreeapp.com/" target="_blank"> View Project</a>
+        </div>
+
+        <div class="project-card">
+            <img src="JQ-Valid.jpg">
+            <h3>JQuery Registration Form</h3>
+            <a href="https://casphercanda1-stack.github.io/JQuery-Validation/" target="_blank"> View Project</a>
+        </div>
+
+        <div class="project-card">
+            <img src="validation.jpg">
+            <h3>Registration Form</h3>
+            <a href="https://casphercanda1-stack.github.io/VALIDATION5/" target="_blank"> View Project</a>
+        </div>
+
+        <div class="project-card">
+            <img src="memory.jpg">
+            <h3>Memory Game</h3>
+            <a href="https://casphercanda1-stack.github.io/SIMPLE-MEMORY-GAMEES/" target="_blank"> View Project</a>
+        </div>
+
+        <div class="project-card">
+            <img src="quiz.jpg">
+            <h3> Quiz App</h3>
+            <a href="https://casphercanda1-stack.github.io/quiz2/" target="_blank"> View Project</a>
+        </div>
+
+        <div class="project-card">
+            <img src="calcu.jpg">
+            <h3>Simple Calculator</h3>
+            <a href="https://casphercanda1-stack.github.io/SIMPLE-CALCU/" target="_blank"> View Project</a>
+        </div>
+
+        <div class="project-card">
+            <img src="team.jpg">
+            <h3>Basic HTML Team Resume</h3>
+            <a href="https://casphercanda1-stack.github.io/resumes-web/Aspiring%20Web%20Developer.html" target="_blank"> View Project</a>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="reflection">
+        <h2>Reflection</h2>
+            My journey as an IT student has taught me patience, creativity, and resilience. 
+            I faced challenges in coding, projects, and deadlines, but each difficulty helped me grow and think more critically. 
+            I learned the importance of teamwork, continuous learning, and adapting to new technologies.
+             Looking back, Im proud of how far Ive come, and I’m motivated to keep improving and exploring the ever-changing world of IT.
+        </p>
+    </section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+    <h2>Contact</h2>
+
+    <div class="card">
+        <ul>
+            <li><strong>Phone Number:</strong><br>09983136526</li>
+            <li><strong>Email Address:</strong><br>casphercanda1@gmail.com</li>
+            <li><strong>Facebook:</strong><br>Caspher Rico Canda</li>
+            <li><strong>Instagram:</strong><br>casphercanda</li>
+        </ul>
+
+        <p>
+            <a href="https://www.facebook.com/CNDS.24" target="_blank">Facebook</a> |
+            <a href="https://www.instagram.com/casphercanda/" target="_blank">Instagram</a>
+        </p>
+    </div>
+</section>
+
+<footer>© 2025 Caspher Canda | E-Portfolio • All Rights Reserved</footer>
+
+<script>
+const links=document.querySelectorAll("nav a");
+const sections=document.querySelectorAll(".section");
+
+links.forEach(link=>{
+    link.addEventListener("click",e=>{
+        e.preventDefault();
+        const id=link.getAttribute("href").substring(1);
+        sections.forEach(s=>s.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+        window.scrollTo({top:0,behavior:"smooth"});
+    });
+});
+</script>
+
+</body>
+  </html>
+  
