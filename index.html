@@ -6,7 +6,6 @@
 <title>Caspher Canda • E-Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <style>
     :root {
@@ -27,6 +26,7 @@
         background: #0d0f23;
         color: var(--text);
         overflow-x: hidden;
+        padding-bottom: 70px; /* Added: Space for the fixed bottom nav on mobile */
     }
 
     .light{
@@ -46,26 +46,32 @@
          100%{ transform: scale(1.4); opacity: 0.9; }
     }
 
+    /* MOBILE NAVIGATION (Default: "from the down side") */
     nav{
            width: 100%;
            position: fixed;
-           top:0;
+           top: auto; /* Changed: Remove top positioning */
+           bottom: 0; /* Added: Fixed to the bottom */
            backdrop-filter: blur(12px);
            background: rgba(255,255,255,0.06);
-           padding: 15px 0;
+           padding: 10px 0; /* Adjusted padding */
            z-index: 999;
            display:flex;
-           justify-content:center;
-           gap: 25px;
-           border-bottom: 1px solid rgba(255,255,255,0.1);
+           justify-content:space-around; /* Changed: Spread out links */
+           gap: 0; /* Changed: Removed gap */
+           border-bottom: none; /* Changed: Removed bottom border */
+           border-top: 1px solid rgba(255,255,255,0.1); /* Added: Top border for bottom nav */
     }
      nav a{
            text-decoration:none;
-           font-weight:600;
+           font-weight:400; /* Adjusted: Lighter font for mobile */
+           font-size: 14px; /* Adjusted: Smaller font for mobile */
            color: var(--neon);
-           padding:10px 18px;
+           padding: 8px 10px; /* Adjusted: Smaller padding for mobile */
            border-radius:10px;
            transition:0.3s;
+           flex-grow: 1; /* Added: Ensures links share space */
+           text-align: center; /* Added: Center text in each link */
     }
      nav a:hover{
            background: var(--primary);
@@ -74,7 +80,7 @@
     }
 
      header{
-          padding-top:130px;
+          padding-top:50px; /* Adjusted: Reduced top padding for mobile since nav is at the bottom */
           padding-bottom:90px;
           text-align:center;
     }
@@ -281,130 +287,31 @@
            opacity:0.7;
         }
 
-/* --- MOBILE NAVIGATION STYLES (New) --- */
-/* Hide the mobile nav by default, show the desktop nav */
-.mobile-nav {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    /* Hide the original top navigation on smaller screens */
-    nav {
-        display: none !important;
+    /* DESKTOP STYLES (min-width: 768px) */
+    @media (min-width: 768px) {
+        body {
+            padding-bottom: 0; /* Remove bottom padding for desktop */
+        }
+        nav{
+            top: 0; /* Fixed to the top */
+            bottom: auto; /* Remove bottom positioning */
+            padding: 15px 5%; /* Restore desktop padding, align from left edge */
+            justify-content: flex-start; /* "from the left side" */
+            gap: 25px; /* Restore desktop gap */
+            border-bottom: 1px solid rgba(255,255,255,0.1); /* Restore bottom border */
+            border-top: none; /* Remove top border */
+        }
+        nav a{
+            font-weight:600; /* Restore desktop font weight */
+            font-size: initial; /* Restore desktop font size */
+            padding:10px 18px; /* Restore desktop padding */
+            flex-grow: 0;
+            text-align: left;
+        }
+        header{
+            padding-top: 130px; /* Restore original top padding */
+        }
     }
-
-    /* New fixed bottom navigation bar */
-    .mobile-nav {
-        display: flex; /* Show the new mobile nav */
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: rgba(13, 15, 35, 0.95); /* A dark, slightly transparent background */
-        backdrop-filter: blur(8px);
-        z-index: 1000;
-        justify-content: space-around;
-        padding: 10px 0;
-        box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.5);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .mobile-nav a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        color: var(--text);
-        font-size: 10px; /* Smaller font for buttons */
-        font-weight: 500;
-        padding: 5px;
-        border-radius: 8px;
-        transition: 0.3s;
-        min-width: 55px; /* Ensure buttons have a minimum width */
-    }
-
-    .mobile-nav a:hover,
-    .mobile-nav a.active-mobile { /* Use a class to highlight the active tab */
-        color: var(--neon);
-        background: rgba(108, 99, 255, 0.2); /* Light primary background */
-    }
-    
-    .mobile-nav i {
-        font-size: 20px; /* Icon size */
-        margin-bottom: 3px;
-    }
-
-/* --- GENERAL MOBILE OPTIMIZATION --- */
-    /* Reduce padding and margin for a tighter fit */
-    body {
-        padding-bottom: 70px; /* Space for the fixed bottom nav */
-    }
-
-    header {
-        padding-top: 80px; /* Less top padding for the header */
-        padding-bottom: 40px;
-    }
-
-    header h1 {
-        font-size: 32px; /* Smaller main heading */
-    }
-
-    header p {
-        font-size: 16px;
-    }
-    
-    .section {
-        margin: 20px auto; /* Tighter margins for sections */
-        padding: 25px;
-        border-radius: 15px; /* Softer border-radius */
-    }
-    
-    .section h2 {
-        font-size: 26px; /* Smaller section headings */
-        margin-bottom: 15px;
-    }
-
-    .card {
-        padding: 15px;
-        border-radius: 12px;
-    }
-
-    /* Adjust skills circles for smaller screens */
-    .skills {
-        gap: 20px;
-        justify-content: space-around;
-    }
-    .skill {
-        flex: 0 0 45%; /* Allow skills to wrap with two per row */
-        max-width: 150px;
-    }
-
-    .circle {
-        width: 100px;
-        height: 100px;
-        font-size: 18px;
-    }
-
-    /* Adjust project grid to stack better or show fewer columns */
-    .project-grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
-        gap: 20px;
-    }
-
-    /* Ensure certificates also stack vertically */
-    .certificates-container {
-        gap: 20px;
-    }
-    .cert-box {
-        width: 100%; /* Full width on mobile */
-        max-width: 400px; /* Optional max-width for very wide phones */
-    }
-
-    footer {
-        padding: 20px 10px;
-        font-size: 12px;
-    }
-}
 </style>
 </head>
 
@@ -424,7 +331,7 @@
 </nav>
 
 <header>
-    <img src="prof pic.jpg" alt="Caspher Canda Profile Picture">
+    <img src="prof pic.jpg" alt="">
     <h1>Caspher R. Canda</h1>
     <p>Web Developer • Designer • IT Student</p>
 </header>
@@ -514,12 +421,12 @@
     <div class="skills">
 
         <div class="skill">
-            <div class="circle" style="--p:60;">60%</div> 
+            <div class="circle" style="--p:70;">60%</div>
             <p>HTML</p>
         </div>
 
         <div class="skill">
-            <div class="circle" style="--p:70;">70%</div>
+            <div class="circle" style="--p:60;">70%</div>
             <p>CSS</p>
         </div>
 
@@ -550,43 +457,43 @@
 
     <div class="project-grid">
         <div class="project-card">
-            <img src="individ.jpg" alt="PHP Individual Activity Screenshot">
+            <img src="individ.jpg">
             <h3>PHP Individual Activity</h3>
             <a href="https://student-information.infinityfreeapp.com/" target="_blank"> View Project</a>
         </div>
 
         <div class="project-card">
-            <img src="JQ-Valid.jpg" alt="JQuery Registration Form Screenshot">
+            <img src="JQ-Valid.jpg">
             <h3>JQuery Registration Form</h3>
             <a href="https://casphercanda1-stack.github.io/JQuery-Validation/" target="_blank"> View Project</a>
         </div>
 
         <div class="project-card">
-            <img src="validation.jpg" alt="Registration Form Screenshot">
+            <img src="validation.jpg">
             <h3>Registration Form</h3>
             <a href="https://casphercanda1-stack.github.io/VALIDATION5/" target="_blank"> View Project</a>
         </div>
 
         <div class="project-card">
-            <img src="memory.jpg" alt="Memory Game Screenshot">
+            <img src="memory.jpg">
             <h3>Memory Game</h3>
             <a href="https://casphercanda1-stack.github.io/SIMPLE-MEMORY-GAMEES/" target="_blank"> View Project</a>
         </div>
 
         <div class="project-card">
-            <img src="quiz.jpg" alt="Quiz App Screenshot">
+            <img src="quiz.jpg">
             <h3> Quiz App</h3>
             <a href="https://casphercanda1-stack.github.io/quiz2/" target="_blank"> View Project</a>
         </div>
 
         <div class="project-card">
-            <img src="calcu.jpg" alt="Simple Calculator Screenshot">
+            <img src="calcu.jpg">
             <h3>Simple Calculator</h3>
             <a href="https://casphercanda1-stack.github.io/SIMPLE-CALCU/" target="_blank"> View Project</a>
         </div>
 
         <div class="project-card">
-            <img src="team.jpg" alt="Basic HTML Team Resume Screenshot">
+            <img src="team.jpg">
             <h3>Basic HTML Team Resume</h3>
             <a href="https://casphercanda1-stack.github.io/resumes-web/Aspiring%20Web%20Developer.html" target="_blank"> View Project</a>
         </div>
@@ -598,7 +505,7 @@
             My journey as an IT student has taught me patience, creativity, and resilience. 
             I faced challenges in coding, projects, and deadlines, but each difficulty helped me grow and think more critically. 
             I learned the importance of teamwork, continuous learning, and adapting to new technologies.
-             Looking back, I'm proud of how far I've come, and I’m motivated to keep improving and exploring the ever-changing world of IT.
+             Looking back, Im proud of how far Ive come, and I’m motivated to keep improving and exploring the ever-changing world of IT.
         </p>
     </section>
 
@@ -620,47 +527,22 @@
     </div>
 </section>
 
-<div class="mobile-nav">
-    <a href="#home"><i class="fas fa-home"></i>Home</a>
-    <a href="#about"><i class="fas fa-user"></i>About</a>
-    <a href="#skills"><i class="fas fa-code"></i>Skills</a>
-    <a href="#projects"><i class="fas fa-flask"></i>Projects</a>
-    <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
-</div>
-
-<footer>© 2025 Caspher Canda | E-Portfolio • All Rights Reserved</footer>
+<footer>© 2025 Caspher Canda | E-Portfolio • A
+ll Rights Reserved</footer>
 
 <script>
 const links=document.querySelectorAll("nav a");
-const mobileLinks = document.querySelectorAll(".mobile-nav a");
 const sections=document.querySelectorAll(".section");
 
-function setActiveSection(id) {
-    sections.forEach(s => s.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
-}
-
-function handleNavClick(e) {
-    e.preventDefault();
-    const id = this.getAttribute("href").substring(1);
-    setActiveSection(id);
-
-    // Update the active state for mobile nav
-    mobileLinks.forEach(link => link.classList.remove("active-mobile"));
-    // Use optional chaining (?) in case the clicked link isn't in the mobile nav
-    document.querySelector(`.mobile-nav a[href="#${id}"]`)?.classList.add("active-mobile");
-    
-    window.scrollTo({top:0,behavior:"smooth"});
-}
-
-// Attach event listeners to both desktop and mobile links
-links.forEach(link => link.addEventListener("click", handleNavClick));
-mobileLinks.forEach(link => link.addEventListener("click", handleNavClick));
-
-// Set initial active state for Home and mobile nav
-setActiveSection("home");
-// Set initial active class on the mobile nav item for 'home'
-document.querySelector('.mobile-nav a[href="#home"]').classList.add("active-mobile");
+links.forEach(link=>{
+    link.addEventListener("click",e=>{
+        e.preventDefault();
+        const id=link.getAttribute("href").substring(1);
+        sections.forEach(s=>s.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+        window.scrollTo({top:0,behavior:"smooth"});
+    });
+});
 </script>
 
 </body>
